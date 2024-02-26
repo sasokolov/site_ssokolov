@@ -1,0 +1,3 @@
+baseURL = 'https://ssokolov.ru/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
