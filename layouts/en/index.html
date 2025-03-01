@@ -1,0 +1,104 @@
+{{ define "main" }}
+<div class="home">
+    <div class="entry-content">
+        <h1>Welcome to my website</h1>
+
+        <p>Here I share my thoughts and knowledge in the IT field, mainly about PostgreSQL, Linux, and system administration.</p>
+
+        <h2>My Expertise</h2>
+
+        <p>With over 20 years of experience in information technology, I specialize in:</p>
+
+        <ul>
+            <li>PostgreSQL database administration and optimization</li>
+            <li>Linux server configuration and management</li>
+            <li>System architecture and performance tuning</li>
+            <li>Information security implementation</li>
+        </ul>
+
+        <p>Whether you need assistance with database performance, Linux server setup, or IT infrastructure consulting, I can help you find the optimal solution for your specific needs.</p>
+
+        <h2>Recent Projects</h2>
+
+        <p>I regularly work on various projects related to my professional interests. Some recent examples include:</p>
+
+        <ul>
+            <li>Setting up high-availability PostgreSQL clusters</li>
+            <li>Implementing automated backup and disaster recovery solutions</li>
+            <li>Configuring secure Linux server environments</li>
+            <li>Creating custom monitoring and alerting systems</li>
+        </ul>
+
+        <p>You can find detailed information about these topics in my <a href="/en/blog/">blog</a>.</p>
+
+        <h2>Get in Touch</h2>
+
+        <p>If you're interested in my services or would like to discuss potential collaboration, please don't hesitate to contact me through <a href="https://t.me/SergeySokolov">Telegram</a> or <a href="mailto:mail@example.com">email</a>.</p>
+    </div>
+    
+    <div class="post-list">
+        {{ $blogPages := where .Site.Pages "Section" "en/blog" }}
+        
+        {{ range first 3 $blogPages }}
+        <article class="post-summary">
+            <header class="entry-header">
+                <h2 class="entry-title">
+                    <a href="{{ .RelPermalink }}" rel="bookmark">{{ .Title }}</a>
+                </h2>
+                <div class="entry-meta">
+                    {{ if not .Params.hideDate }}
+                    <span class="posted-on">
+                        Published
+                        <a href="{{ .RelPermalink }}" rel="bookmark">
+                            <time class="entry-date published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+                                {{ .Date.Format (default "Jan 02, 2006" .Site.Params.dateFormat) }}
+                            </time>
+                        </a>
+                    </span>
+                    {{ end }}
+                    {{ if .Params.author }}
+                    <span class="byline"> 
+                        by
+                        <span class="author vcard">
+                            <a class="url fn n" href="{{ .Site.BaseURL }}author/{{ .Params.author | urlize }}">{{ .Params.author }}</a>
+                        </span>
+                    </span>
+                    {{ end }}
+                </div>
+            </header>
+            <div class="entry-content clearfix">
+                <div class="post-summary-content">
+                    {{ with .Description }}
+                        <p>{{ . }}</p>
+                    {{ else }}
+                        {{ if .Params.summary }}
+                            <p>{{ .Params.summary }}</p>
+                        {{ else }}
+                            {{ $summary := .Summary | plainify | replaceRE `\s\s+` " " }}
+                            {{ $truncated := substr $summary 0 180 }}
+                            <p>{{ $truncated }}...</p>
+                        {{ end }}
+                    {{ end }}
+                </div>
+                <p><a href="{{ .RelPermalink }}" class="read-more">Read more &rarr;</a></p>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+    
+    {{ $blogCount := len (where .Site.Pages "Section" "en/blog") }}
+    
+    {{ if gt $blogCount 3 }}
+    <nav class="navigation paging-navigation">
+        <h2 class="screen-reader-text">Posts Navigation</h2>
+        <div class="nav-links">
+            <div class="nav-previous">
+                <a href="/en/blog/" >
+                    <span class="meta-nav">&larr;</span> All Posts
+                </a>
+            </div>
+        </div>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Сергей Соколов</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Сергей Соколов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-RU</language>
+    <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-signed GOST2012 Certificate</title>
+      <link>http://localhost:1313/en/blog/gost2012-certificate/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blog/gost2012-certificate/</guid>
+      <description>Commands for creating self-signed certificates using the Russian GOST 2012 encryption standard.</description>
+    </item>
+    <item>
+      <title>Самоподписной сертификат gost2012</title>
+      <link>http://localhost:1313/2019/02/14/gost2012-certificate/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2019/02/14/gost2012-certificate/</guid>
+      <description>Команды для создания самоподписанных сертификатов с использованием российского стандарта шифрования ГОСТ 2012.</description>
+    </item>
+    <item>
+      <title>RPM Cheatsheet</title>
+      <link>http://localhost:1313/en/blog/rpm-cheatsheet/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blog/rpm-cheatsheet/</guid>
+      <description>Useful commands and macros for working with RPM and managing package building.</description>
+    </item>
+    <item>
+      <title>Шпаргалка rpm</title>
+      <link>http://localhost:1313/2018/07/02/rpm-cheatsheet/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2018/07/02/rpm-cheatsheet/</guid>
+      <description>Полезные команды и макросы для работы с RPM и управления сборкой пакетов.</description>
+    </item>
+    <item>
+      <title>PostgreSQL and Some Queries</title>
+      <link>http://localhost:1313/en/blog/postgresql-some-queries/</link>
+      <pubDate>Sat, 12 May 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blog/postgresql-some-queries/</guid>
+      <description>A post with examples of efficient use of count() queries in PostgreSQL, including analysis of query execution plans and optimization.</description>
+    </item>
+    <item>
+      <title>PostgreSQL и некоторые запросы</title>
+      <link>http://localhost:1313/2018/05/12/postgresql-some-queries/</link>
+      <pubDate>Sat, 12 May 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2018/05/12/postgresql-some-queries/</guid>
+      <description>Запись с примерами эффективного использования запросов count() в PostgreSQL, включая анализ планов выполнения запросов и оптимизацию.</description>
+    </item>
+    <item>
+      <title>ext4 file-based encryption</title>
+      <link>http://localhost:1313/en/blog/ext4-file-based-encryption/</link>
+      <pubDate>Wed, 16 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blog/ext4-file-based-encryption/</guid>
+      <description>Guide to using file-level encryption in the ext4 file system, available starting with Linux kernel 4.1.</description>
+    </item>
+    <item>
+      <title>ext4 file-based шифрование</title>
+      <link>http://localhost:1313/2016/11/16/ext4-file-based-encryption/</link>
+      <pubDate>Wed, 16 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/11/16/ext4-file-based-encryption/</guid>
+      <description>Руководство по использованию шифрования на уровне файлов в файловой системе ext4, доступного начиная с ядра Linux 4.1.</description>
+    </item>
+  </channel>
+</rss>

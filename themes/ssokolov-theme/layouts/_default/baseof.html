@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{{ $lang := "ru" }}
+{{ if in .Permalink "/en/" }}
+  {{ $lang = "en" }}
+{{ end }}
+<html lang="{{ $lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <link rel="icon" href="{{ .Site.Params.logo }}" sizes="32x32" />
+    <link rel="icon" href="{{ .Site.Params.logo }}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{{ .Site.Params.logo }}" />
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    {{/* Debug styles removed */}}
+</head>
+<body class="{{ if .IsHome }}home{{ else }}{{ if eq .Type "page" }}page{{ else }}post{{ end }}{{ end }}">
+    <a class="sidebar-toggle open"><div class="dashicons dashicons-menu"></div></a>
+    <div id="page" class="site">
+        <header id="masthead" class="site-header">
+            {{ partial "header.html" . }}
+        </header>
+        <div id="content" class="site-content">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main">
+                    {{/* Debug information removed */}}
+                    {{ block "main" . }}{{ end }}
+                </main>
+            </div>
+        </div>
+        <footer id="colophon" class="site-footer">
+            {{ partial "footer.html" . }}
+        </footer>
+    </div>
+    <div id="secondary" class="widget-area" role="complementary">
+        <a class="sidebar-toggle close"><div class="dashicons dashicons-dismiss"></div></a>
+        {{ partial "sidebar.html" . }}
+    </div>
+    <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>

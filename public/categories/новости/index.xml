@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Новости on Сергей Соколов</title>
+    <link>http://localhost:1313/categories/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8/</link>
+    <description>Recent content in Новости on Сергей Соколов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-RU</language>
+    <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Самоподписной сертификат gost2012</title>
+      <link>http://localhost:1313/2019/02/14/gost2012-certificate/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2019/02/14/gost2012-certificate/</guid>
+      <description>Команды для создания самоподписанных сертификатов с использованием российского стандарта шифрования ГОСТ 2012.</description>
+    </item>
+    <item>
+      <title>ext4 file-based шифрование</title>
+      <link>http://localhost:1313/2016/11/16/ext4-file-based-encryption/</link>
+      <pubDate>Wed, 16 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/11/16/ext4-file-based-encryption/</guid>
+      <description>Руководство по использованию шифрования на уровне файлов в файловой системе ext4, доступного начиная с ядра Linux 4.1.</description>
+    </item>
+  </channel>
+</rss>

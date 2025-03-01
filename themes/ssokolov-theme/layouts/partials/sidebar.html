@@ -1,0 +1,61 @@
+{{ $langPrefix := "" }}
+{{ $lang := "ru" }}
+{{ if in .Permalink "/en/" }}
+  {{ $langPrefix = "/en" }}
+  {{ $lang = "en" }}
+{{ end }}
+
+<aside class="widget widget_search">
+    <form role="search" method="get" class="search-form" action="{{ .Site.BaseURL }}search">
+        <label>
+            <span class="screen-reader-text">{{ if eq $lang "ru" }}Найти:{{ else }}Search:{{ end }}</span>
+            <input type="search" class="search-field" placeholder="{{ if eq $lang "ru" }}Поиск…{{ else }}Search…{{ end }}" value="" name="s" />
+        </label>
+        <input type="submit" class="search-submit" value="{{ if eq $lang "ru" }}Поиск{{ else }}Search{{ end }}" />
+    </form>
+</aside>
+
+<aside class="widget widget_recent_entries">
+    <h3 class="widget-title">{{ if eq $lang "ru" }}Свежие записи{{ else }}Recent Posts{{ end }}</h3>
+    <ul>
+        {{ if eq $lang "ru" }}
+          {{ range first 5 (where .Site.RegularPages "Type" "blog") }}
+          <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </li>
+          {{ end }}
+        {{ else }}
+          <li><a href="/en/blog/ext4-file-based-encryption/">ext4 file-based encryption</a></li>
+          <li><a href="/en/blog/gost2012-certificate/">Self-signed GOST2012 Certificate</a></li>
+          <li><a href="/en/blog/postgresql-some-queries/">PostgreSQL and Some Queries</a></li>
+          <li><a href="/en/blog/rpm-cheatsheet/">RPM Cheatsheet</a></li>
+        {{ end }}
+    </ul>
+</aside>
+
+<aside class="widget widget_archives">
+    <h3 class="widget-title">{{ if eq $lang "ru" }}Архивы{{ else }}Archives{{ end }}</h3>
+    <ul>
+        <li><a href="{{ $langPrefix }}/blog/">{{ if eq $lang "ru" }}Все записи{{ else }}All Posts{{ end }}</a></li>
+    </ul>
+</aside>
+
+<aside class="widget widget_categories">
+    <h3 class="widget-title">{{ if eq $lang "ru" }}Рубрики{{ else }}Categories{{ end }}</h3>
+    <ul>
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        <li class="cat-item">
+            <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a> ({{ $taxonomy.Count }})
+        </li>
+        {{ end }}
+    </ul>
+</aside>
+
+<aside class="widget widget_meta">
+    <h3 class="widget-title">{{ if eq $lang "ru" }}Мета{{ else }}Meta{{ end }}</h3>
+    <ul>
+        <li><a href="{{ .Site.BaseURL }}">{{ if eq $lang "ru" }}Войти{{ else }}Log in{{ end }}</a></li>
+        <li><a href="{{ .Site.BaseURL }}index.xml">{{ if eq $lang "ru" }}Лента записей{{ else }}RSS Feed{{ end }}</a></li>
+        <li><a href="{{ if eq $lang "ru" }}https://ru.wordpress.org/{{ else }}https://wordpress.org/{{ end }}">WordPress.org</a></li>
+    </ul>
+</aside>

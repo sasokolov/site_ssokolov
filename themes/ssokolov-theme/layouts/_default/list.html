@@ -1,0 +1,99 @@
+{{ define "main" }}
+<div class="post-list">
+    <h1 class="entry-title">{{ .Title }}</h1>
+    
+    {{ with .Content }}
+    <div class="entry-content clearfix">
+        {{ . }}
+    </div>
+    {{ end }}
+    
+    {{ range .Pages }}
+    <article class="post-summary">
+        <header class="entry-header">
+            <h2 class="entry-title">
+                <a href="{{ .RelPermalink }}" rel="bookmark">{{ .Title }}</a>
+            </h2>
+            <div class="entry-meta">
+                {{ if not .Params.hideDate }}
+                {{ $lang := "ru" }}
+                {{ if in $.Permalink "/en/" }}
+                  {{ $lang = "en" }}
+                {{ end }}
+                <span class="posted-on">
+                    {{ if eq $lang "ru" }}Опубликовано{{ else }}Published{{ end }} 
+                    <a href="{{ .RelPermalink }}" rel="bookmark">
+                        <time class="entry-date published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+                            {{ if eq $lang "ru" }}
+                                {{ .Date.Format (default "02.01.2006" .Site.Params.dateFormat) }}
+                            {{ else }}
+                                {{ .Date.Format (default "Jan 02, 2006" .Site.Params.dateFormat) }}
+                            {{ end }}
+                        </time>
+                    </a>
+                </span>
+                {{ end }}
+                {{ if .Params.author }}
+                <span class="byline"> 
+                    {{ $lang := "ru" }}
+                    {{ if in $.Permalink "/en/" }}
+                      {{ $lang = "en" }}
+                    {{ end }}
+                    {{ if eq $lang "ru" }}автором{{ else }}by{{ end }}
+                    <span class="author vcard">
+                        <a class="url fn n" href="{{ .Site.BaseURL }}author/{{ .Params.author | urlize }}">{{ .Params.author }}</a>
+                    </span>
+                </span>
+                {{ end }}
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            <div class="post-summary-content">
+                {{ with .Description }}
+                    <p>{{ . }}</p>
+                {{ else }}
+                    {{ if .Params.summary }}
+                        <p>{{ .Params.summary }}</p>
+                    {{ else }}
+                        {{ $summary := .Summary | plainify | replaceRE `\s\s+` " " }}
+                        {{ $truncated := substr $summary 0 180 }}
+                        <p>{{ $truncated }}...</p>
+                    {{ end }}
+                {{ end }}
+            </div>
+            {{ $lang := "ru" }}
+            {{ if in $.Permalink "/en/" }}
+              {{ $lang = "en" }}
+            {{ end }}
+            <p><a href="{{ .RelPermalink }}" class="read-more">{{ if eq $lang "ru" }}Читать далее{{ else }}Read more{{ end }} &rarr;</a></p>
+        </div>
+    </article>
+    {{ end }}
+    
+    {{ if gt .Paginator.TotalPages 1 }}
+    {{ $lang := "ru" }}
+    {{ if in $.Permalink "/en/" }}
+      {{ $lang = "en" }}
+    {{ end }}
+    <nav class="navigation paging-navigation">
+        <h2 class="screen-reader-text">{{ if eq $lang "ru" }}Навигация по записям{{ else }}Posts Navigation{{ end }}</h2>
+        <div class="nav-links">
+            {{ if .Paginator.HasPrev }}
+            <div class="nav-previous">
+                <a href="{{ .Paginator.Prev.URL }}" >
+                    <span class="meta-nav">&larr;</span> {{ if eq $lang "ru" }}Предыдущие записи{{ else }}Previous Posts{{ end }}
+                </a>
+            </div>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+            <div class="nav-next">
+                <a href="{{ .Paginator.Next.URL }}" >
+                    {{ if eq $lang "ru" }}Следующие записи{{ else }}Next Posts{{ end }} <span class="meta-nav">&rarr;</span>
+                </a>
+            </div>
+            {{ end }}
+        </div>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

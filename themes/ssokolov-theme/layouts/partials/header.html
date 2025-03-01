@@ -1,0 +1,52 @@
+{{ $langPrefix := "" }}
+{{ $lang := "ru" }}
+{{ if in .Permalink "/en/" }}
+  {{ $langPrefix = "/en" }}
+  {{ $lang = "en" }}
+{{ end }}
+
+<a href="{{ $langPrefix }}/" class="site-logo-link" rel="home">
+    <img width="150" height="150" src="{{ .Site.Params.logo }}" class="site-logo" alt="{{ .Site.Title }}" />
+</a>
+<div class="site-branding">
+    <h1 class="site-title"><a href="{{ $langPrefix }}/" rel="home">{{ if eq $lang "ru" }}Сергей Соколов{{ else }}Sergey Sokolov{{ end }}</a></h1>
+    <h2 class="site-description">{{ if eq $lang "ru" }}Личный сайт{{ else }}Personal Website{{ end }}</h2>
+</div>
+<nav id="site-navigation" class="main-navigation">
+    <button class="menu-toggle">{{ if eq $lang "ru" }}Основное меню{{ else }}Main Menu{{ end }}</button>
+    <a class="skip-link screen-reader-text" href="#content">{{ if eq $lang "ru" }}Перейти к содержимому{{ else }}Skip to content{{ end }}</a>
+    <div class="menu-container">
+        <ul id="menu" class="menu">
+            {{ if eq $lang "ru" }}
+              {{ range .Site.Menus.main }}
+              <li class="menu-item{{ if $.IsMenuCurrent "main" . }} current-menu-item{{ end }}">
+                  <a href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+              {{ end }}
+            {{ else }}
+              <li class="menu-item">
+                <a href="/en/">Home</a>
+              </li>
+              <li class="menu-item">
+                <a href="/en/services/">Services</a>
+              </li>
+              <li class="menu-item">
+                <a href="/en/about/">About</a>
+              </li>
+              <li class="menu-item">
+                <a href="/en/blog/">Blog</a>
+              </li>
+            {{ end }}
+            {{ $currentLang := $lang }}
+            <li class="menu-item menu-item-has-children">
+                <a href="javascript:toggleLanguage('{{ if eq $currentLang "ru" }}en{{ else }}ru{{ end }}')" class="language-switcher-toggle">
+                    {{ if eq $currentLang "ru" }}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAdVBMVEX19f/u7vjm5/H+/v75+fng4Ove3ulFRfyysv6cnP6QkPmIiPh/f/YAAOYAAP1ycv5QUP06OvkxMfcoKPcgIPYUFPS0AADdaYzTRG/RPGnOM2LKLFzIIVPCEUZ7AAD0AQH7YGH3ODj0JyfzERDgAAD4TU3pAABIfLuPAAAAT0lEQVR4AQXBAQqDMAAAsZytyHzA/v9LYRS7JIAQMkBb0ATsgLoKInnHvIrHrdRaBzxupTDxuFUifUsp4R3zU4iwzmOyT1ibBtP2u3C+wB+SHBB5JNY7DAAAAABJRU5ErkJggg==" alt="Русский" width="16" height="11" style="width: 16px; height: 11px;" />
+                    {{ else }}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHzSURBVHjaYkxOP8IAB//+Mfz7w8Dwi4HhP5CcJb/n/7evb16/APL/gRFQDiAAw3JuAgAIBEDQ/iswEERjGzBQLEru97ll0g0+3HvqMn1SpqlqGsZMsZsIe0SICA5gt5a/AGIEarCPtFh+6N/ffwxA9OvP/7//QYwff/6fZahmePeB4dNHhi+fGb59Y4zyvHHmCEAAAW3YDzQYaJJ93a+vX79aVf58//69fvEPlpIfnz59+vDhw7t37968efP3b/SXL59OnjwIEEAsDP+YgY53b2b89++/awvLn98MDi2cVxl+/vl6mituCtBghi9f/v/48e/XL86krj9XzwEEEENy8g6gu22rfn78+NGs5Ofr16+ZC58+fvyYwX8rxOxXr169fPny+fPn1//93bJlBUAAsQADZMEBxj9/GBxb2P/9+S/R8u3vzxuyaX8ZHv3j8/YGms3w8ycQARmi2eE37t4ACCDGR4/uSkrKAS35B3TT////wADOgLOBIaXIyjBlwxKAAGKRXjCB0SOEaeu+/y9fMnz4AHQxCP348R/o+l+//sMZQBNLEvif3AcIIMZbty7Ly6t9ZmXl+fXj/38GoHH/UcGfP79//BBiYHjy9+8/oUkNAAHEwt1V/vI/KBY/QSISFqM/GBg+MzB8A6PfYC5EFiDAABqgW776MP0rAAAAAElFTkSuQmCC" alt="English" width="16" height="11" style="width: 16px; height: 11px;" />
+                    {{ end }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

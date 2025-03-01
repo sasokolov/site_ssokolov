@@ -1,0 +1,99 @@
+{{ define "main" }}
+<div class="home">
+    <div class="entry-content">
+        {{ with .Content }}
+            {{ . }}
+        {{ end }}
+    </div>
+    
+    {{ $lang := "ru" }}
+    {{ if in .Permalink "/en/" }}
+      {{ $lang = "en" }}
+    {{ end }}
+    
+    {{ if eq $lang "en" }}
+        {{ with .Site.GetPage "/en" }}
+            <div class="english-content">
+                {{ .Content }}
+            </div>
+        {{ else }}
+            <div class="error-message">Error: English homepage content not found</div>
+        {{ end }}
+    {{ end }}
+    
+    <div class="post-list">
+        {{ $blogPages := where .Site.RegularPages "Type" "blog" }}
+        {{ if eq $lang "en" }}
+            {{ $blogPages = where .Site.Pages "Section" "en/blog" }}
+        {{ end }}
+        
+        {{ range first 3 $blogPages }}
+        <article class="post-summary">
+            <header class="entry-header">
+                <h2 class="entry-title">
+                    <a href="{{ .RelPermalink }}" rel="bookmark">{{ .Title }}</a>
+                </h2>
+                <div class="entry-meta">
+                    {{ if not .Params.hideDate }}
+                    <span class="posted-on">
+                        {{ if eq $lang "ru" }}Опубликовано{{ else }}Published{{ end }} 
+                        <a href="{{ .RelPermalink }}" rel="bookmark">
+                            <time class="entry-date published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+                                {{ if eq $lang "ru" }}
+                                    {{ .Date.Format (default "02.01.2006" .Site.Params.dateFormat) }}
+                                {{ else }}
+                                    {{ .Date.Format (default "Jan 02, 2006" .Site.Params.dateFormat) }}
+                                {{ end }}
+                            </time>
+                        </a>
+                    </span>
+                    {{ end }}
+                    {{ if .Params.author }}
+                    <span class="byline"> 
+                        {{ if eq $lang "ru" }}автором{{ else }}by{{ end }}
+                        <span class="author vcard">
+                            <a class="url fn n" href="{{ .Site.BaseURL }}author/{{ .Params.author | urlize }}">{{ .Params.author }}</a>
+                        </span>
+                    </span>
+                    {{ end }}
+                </div>
+            </header>
+            <div class="entry-content clearfix">
+                <div class="post-summary-content">
+                    {{ with .Description }}
+                        <p>{{ . }}</p>
+                    {{ else }}
+                        {{ if .Params.summary }}
+                            <p>{{ .Params.summary }}</p>
+                        {{ else }}
+                            {{ $summary := .Summary | plainify | replaceRE `\s\s+` " " }}
+                            {{ $truncated := substr $summary 0 180 }}
+                            <p>{{ $truncated }}...</p>
+                        {{ end }}
+                    {{ end }}
+                </div>
+                <p><a href="{{ .RelPermalink }}" class="read-more">{{ if eq $lang "ru" }}Читать далее{{ else }}Read more{{ end }} &rarr;</a></p>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+    
+    {{ $blogCount := len (where .Site.RegularPages "Type" "blog") }}
+    {{ if eq $lang "en" }}
+        {{ $blogCount = len (where .Site.Pages "Section" "en/blog") }}
+    {{ end }}
+    
+    {{ if gt $blogCount 3 }}
+    <nav class="navigation paging-navigation">
+        <h2 class="screen-reader-text">{{ if eq $lang "ru" }}Навигация по записям{{ else }}Posts Navigation{{ end }}</h2>
+        <div class="nav-links">
+            <div class="nav-previous">
+                <a href="{{ if eq $lang "ru" }}/blog/{{ else }}/en/blog/{{ end }}" >
+                    <span class="meta-nav">&larr;</span> {{ if eq $lang "ru" }}Все записи{{ else }}All Posts{{ end }}
+                </a>
+            </div>
+        </div>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

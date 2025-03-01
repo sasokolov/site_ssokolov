@@ -1,0 +1,89 @@
+baseURL = "https://ssokolov.ru/"
+languageCode = "ru-RU"
+title = "Сергей Соколов"
+theme = "ssokolov-theme"
+defaultContentLanguage = "ru"
+summaryLength = 70
+enableRobotsTXT = true
+paginate = 10
+
+[permalinks]
+  blog = "/:year/:month/:day/:filename/"
+
+[languages]
+  [languages.ru]
+    languageName = "Русский"
+    weight = 1
+    title = "Сергей Соколов"
+    languageCode = "ru-RU"
+    [languages.ru.params]
+      description = "Личный сайт"
+    [[languages.ru.menu.main]]
+      name = "Главная"
+      url = "/"
+      weight = 1
+    [[languages.ru.menu.main]]
+      name = "Услуги"
+      url = "/services/"
+      weight = 2
+    [[languages.ru.menu.main]]
+      name = "О себе"
+      url = "/about/"
+      weight = 3
+    [[languages.ru.menu.main]]
+      name = "Блог"
+      url = "/blog/"
+      weight = 4
+      
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    title = "Sergey Sokolov"
+    languageCode = "en-US"
+    contentDir = "content/en"
+    [languages.en.params]
+      description = "Sergey Sokolov's Personal Website"
+      dateFormat = "Jan 02, 2006"
+      author = "Sergey Sokolov"
+      subtitle = "Personal Website"
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 1
+    [[languages.en.menu.main]]
+      name = "Services"
+      url = "/en/services/"
+      weight = 2
+    [[languages.en.menu.main]]
+      name = "About"
+      url = "/en/about/"
+      weight = 3
+    [[languages.en.menu.main]]
+      name = "Blog"
+      url = "/en/blog/"
+      weight = 4
+
+[params]
+  description = "Личный сайт Сергея Соколова"
+  logo = "/images/S.png"
+  dateFormat = "02.01.2006"
+  author = "Сергей Соколов"
+  subtitle = "Личный сайт"
+  mainSections = ["blog"]
+  defaultImage = "/images/favicon.ico"
+
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "github"
+    tabWidth = 2

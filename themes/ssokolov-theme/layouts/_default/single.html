@@ -1,0 +1,60 @@
+{{ define "main" }}
+<article class="post">
+    <header class="entry-header">
+        <h2 class="entry-title">{{ .Title }}</h2>
+        <div class="entry-meta">
+            {{ if not .Params.hideDate }}
+            <span class="posted-on">
+                {{ $lang := "ru" }}
+                {{ if in .Permalink "/en/" }}
+                  {{ $lang = "en" }}
+                {{ end }}
+                {{ if eq $lang "ru" }}Опубликовано{{ else }}Published{{ end }} 
+                <a href="{{ .RelPermalink }}" rel="bookmark">
+                    <time class="entry-date published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+                        {{ if eq $lang "ru" }}
+                            {{ .Date.Format (default "02.01.2006" .Site.Params.dateFormat) }}
+                        {{ else }}
+                            {{ .Date.Format (default "Jan 02, 2006" .Site.Params.dateFormat) }}
+                        {{ end }}
+                    </time>
+                </a>
+            </span>
+            {{ end }}
+            {{ if .Params.author }}
+            <span class="byline"> 
+                {{ $lang := "ru" }}
+                {{ if in .Permalink "/en/" }}
+                  {{ $lang = "en" }}
+                {{ end }}
+                {{ if eq $lang "ru" }}автором{{ else }}by{{ end }}
+                <span class="author vcard">
+                    <a class="url fn n" href="{{ .Site.BaseURL }}author/{{ .Params.author | urlize }}">{{ .Params.author }}</a>
+                </span>
+            </span>
+            {{ end }}
+        </div>
+    </header>
+    <div class="entry-content clearfix">
+        {{ .Content }}
+    </div>
+    <footer class="entry-footer">
+        {{ $lang := "ru" }}
+        {{ if in $.Permalink "/en/" }}
+          {{ $lang = "en" }}
+        {{ end }}
+        {{ with .Params.tags }}
+        <span class="tags-links">
+            {{ if eq $lang "ru" }}Метки:{{ else }}Tagged:{{ end }} 
+            {{ range $i, $e := . }}
+            {{ if $i }}, {{ end }}
+            <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}" rel="tag">{{ . }}</a>
+            {{ end }}
+        </span>
+        {{ end }}
+        <span class="comments-link">
+            <a href="{{ .RelPermalink }}#comments">{{ if eq $lang "ru" }}Оставить комментарий{{ else }}Leave a comment{{ end }}</a>
+        </span>
+    </footer>
+</article>
+{{ end }}
