@@ -5,7 +5,8 @@ theme = "ssokolov-theme"
 defaultContentLanguage = "ru"
 summaryLength = 70
 enableRobotsTXT = true
-paginate = 10
+[pagination]
+  pagerSize = 10
 
 [permalinks]
   blog = "/:year/:month/:day/:filename/"

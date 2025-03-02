@@ -1,0 +1,84 @@
+# Hugo specific
+public/
+resources/_gen/
+.hugo_build.lock
+hugo.exe
+hugo.darwin
+hugo.linux
+assets/jsconfig.json
+.hugo_build.lock
+
+# Temporary files
+*.bak
+*.swp
+*~
+*.tmp
+tmp/
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+## VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+## JetBrains IDEs (IntelliJ, GoLand, WebStorm, etc)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+## Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+## Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+## Vim
+*.swp
+*.swo
+Session.vim
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.npm/
+.node_repl_history
+.yarn-integrity
+
+# Build output
+hugo-ssokolov/dist/
+hugo-ssokolov/build/
+
+# Local environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+
+# System files that might be created on different platforms
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
