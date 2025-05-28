@@ -7,6 +7,8 @@ author: "Sergey"
 summary: "How I stopped being envious and learned to 'deploy to production' with AI"
 ---
 
+<img src="/images/43c78b1e-a00b-41da-bfbb-de335df76a61.png" alt="artificial intelligence helps a person" class="alignright" width="335" height="148" />
+
 Hello friends!
 
 You know, I've always looked with a bit of envy at two categories of people. The first - those who can create things with their hands. You know, like carving a masterpiece from wood, building a house on their own, or at the very least, hanging wallpaper straight. I'm not very good at that, to be honest. My hands are as clumsy as they've always been, and there's nothing to be done about it.
